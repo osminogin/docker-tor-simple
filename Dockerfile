@@ -8,4 +8,5 @@ RUN sed -i "1s/^/SocksPort 0.0.0.0:9050\n/" /etc/tor/torrc
 EXPOSE 9050
 
 VOLUME "/var/lib/tor"
-CMD "/usr/bin/tor"
+USER debian-tor
+ENTRYPOINT /usr/bin/tor
