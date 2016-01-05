@@ -9,4 +9,4 @@ EXPOSE 9050
 
 VOLUME "/var/lib/tor"
 USER debian-tor
-ENTRYPOINT /usr/bin/tor
+CMD ["/usr/bin/tor"]
