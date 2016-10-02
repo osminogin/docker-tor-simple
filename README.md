@@ -1,4 +1,5 @@
-# docker-tor-simple
+# docker-tor-simple [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple)
+
 
 Simple docker container for Tor anonymity software. 
 
