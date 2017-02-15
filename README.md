@@ -7,7 +7,7 @@ It works well as a single container (expose port 9050) or in conjunction with ot
 
 Container is ready for access to the Tor network without any additional configuration (use SOCKSv5 port 9050).
 
-The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (about 12 MB).
+The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (less than 5 MB).
 
 Please star this project on Docker Hub: https://hub.docker.com/r/osminogin/tor-simple/
 
