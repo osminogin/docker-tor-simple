@@ -1,17 +1,13 @@
 # docker-tor-simple [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple)
 
 
-Simple minimalistic docker container for Tor anonymity software. 
+Simplest minimal docker container for Tor anonymity software. 
 
-It works well as a single container (expose port 9050) or in conjunction 
-with other containers (like `nginx` and `osminogin/php-fpm`) for organizing 
-complex hidden services in the Tor network.
+It works well as a single container (expose port 9050) or in conjunction with other containers (like `nginx` and `osminogin/php-fpm`) for organizing complex hidden services in the Tor network.
 
-Container is ready for access to the Tor network without any additional 
-configuration (use SOCKSv5 port 9050).
+Container is ready for access to the Tor network without any additional configuration (use SOCKSv5 port 9050).
 
-The image is based on great [Alpine Linux](https://alpinelinux.org/) 
-distribution so it is has extremely low size (about 12 MB).
+The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (about 12 MB).
 
 Please star this project on Docker Hub: https://hub.docker.com/r/osminogin/tor-simple/
 
@@ -23,8 +19,7 @@ docker run -p 9050:9050 --name tor osminogin/tor-simple
 
 ### Hidden services
 
-Example of webserver setup with microservice architecture adopted 
-to arrange Tor hidden service. 
+Example of webserver setup with microservice architecture adopted to arrange Tor hidden service. 
 
 #### docker-compose.yml
 
