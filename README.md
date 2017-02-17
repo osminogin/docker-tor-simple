@@ -5,10 +5,9 @@ Simplest minimal docker container for Tor anonymity software.
 
 It works well as a single self-contained container or in cooperation with other containers (like `nginx` and `osminogin/php-fpm`) for organizing complex hidden services on the Tor network.
 
-
 The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (less than 5 MB).
 
-Please star this project on Docker Hub: https://hub.docker.com/r/osminogin/tor-simple/
+Star this project on Docker Hub: https://hub.docker.com/r/osminogin/tor-simple/
 
 
 ## Getting started
@@ -25,7 +24,7 @@ docker run -p 9050:9050 --name tor osminogin/tor-simple
 
 ### Examples 
 
-Example webserver setup with microservice architecture to arrange Tor hidden service. 
+Example webserver deployment config with microservice architecture to setup Tor hidden service. 
 
 
 #### docker-compose.yml
