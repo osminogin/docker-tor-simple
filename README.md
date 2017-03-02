@@ -13,8 +13,10 @@ Star this project on Docker Hub: https://hub.docker.com/r/osminogin/tor-simple/
 ## Getting started
 
 ```bash
-docker run -p 9050:9050 --name tor osminogin/tor-simple
+docker run -p 127.0.0.1:9050:9050 --name tor osminogin/tor-simple
 ```
+
+Now you have a SOCKSv5 proxy listening on `localhost:9050`
 
 
 ## Ports
