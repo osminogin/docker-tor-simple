@@ -1,11 +1,9 @@
 # docker-tor-simple [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple)
 
 
-Simplest minimal docker container for Tor anonymity software. 
+Simplest minimal docker container for Tor anonymity software. The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (less than 5 MB).
 
 It works well as a single self-contained container or in cooperation with other containers (like `nginx` and `osminogin/php-fpm`) for organizing complex hidden services on the Tor network.
-
-The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (less than 5 MB).
 
 Star this project on Docker Hub: https://hub.docker.com/r/osminogin/tor-simple/
 
@@ -15,8 +13,6 @@ Star this project on Docker Hub: https://hub.docker.com/r/osminogin/tor-simple/
 ```bash
 docker run -p 127.0.0.1:9050:9050 --name tor osminogin/tor-simple
 ```
-
-Now you have a SOCKSv5 proxy listening on `localhost:9050`
 
 
 ## Ports
