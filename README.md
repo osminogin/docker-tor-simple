@@ -8,7 +8,7 @@ Suitable for relay, exit node or hidden service modes with SOCKS5 proxy enabled.
 
 The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (less than 5 MB).
 
-:star2: Star this project on Docker Hub: https://hub.docker.com/r/osminogin/tor-simple/
+Star this project on Docker Hub :star2: https://hub.docker.com/r/osminogin/tor-simple/
 
 
 ## Getting started
@@ -19,7 +19,9 @@ docker run -p 127.0.0.1:9050:9050 --name tor osminogin/tor-simple
 
 After start Tor proxy available on `localhost:9050`
 
-**Warning!** Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exactly what you are doing (better bind to localhost as in the example above).
+:exclamation:**Warning**:exclamation:
+
+Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exactly what you are doing (better bind to localhost as in the example above).
 
 
 ## Ports
