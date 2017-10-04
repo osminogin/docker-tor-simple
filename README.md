@@ -13,6 +13,24 @@ Star this project on Docker Hub :star2: https://hub.docker.com/r/osminogin/tor-s
 
 ## Getting started
 
+
+### Installation
+
+Automated builds of the image are available on [Docker Hub](https://hub.docker.com/r/osminogin/tor-simple/) and is the recommended method of installation.
+
+```bash
+docker pull osminogin/tor-simple
+```
+
+Alternatively you can build the image yourself.
+
+```bash
+docker build -t tor github.com/osminogin/docker-tor-simple
+```
+
+
+### Quickstart
+
 ```bash
 docker run -p 127.0.0.1:9050:9050 --name tor osminogin/tor-simple
 ```
