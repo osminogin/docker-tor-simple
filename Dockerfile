@@ -7,6 +7,7 @@ RUN apk add --no-cache tor && \
 EXPOSE 9001  # ORPort
 EXPOSE 9030  # DirPort
 EXPOSE 9050  # SocksPort
+EXPOSE 9051  # ControlPort
 
 VOLUME "/var/lib/tor"
 USER tor
