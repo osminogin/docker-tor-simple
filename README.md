@@ -44,7 +44,15 @@ Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exact
 
 ## Ports
 
-* `9050` SOCKSv5 (without auth)
+For client usage – DO NOT publish these ports to any public networks:
+
+* `9050` SOCKSv5 (No authentication, see the [Quickstart](#Quickstart) section above)
+* `9051` ControlPort (To use uncomment the `ControlPort` and `HashedControlPassword` option in `/etc/tor/torrc` and **change the password value**)
+
+For relay/exit node usage – Each of these ports needs to be enabled in `/etc/tor/torrc` and published to a public network address to be of any use:
+
+* `9001` ORPort (Tor client relay port)
+* `9030` DirPort (Tor directory port, it is recommended that you enable this when running a relay as well)
 
 
 ## Unit file for systemd
