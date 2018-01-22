@@ -19,8 +19,6 @@ Star this project on Docker Hub :star2: https://hub.docker.com/r/osminogin/tor-s
 
 * `/var/lib/tor` data dir.
 
-* `/etc/tor/torrc` config file.
-
 
 ## Getting started
 
@@ -59,7 +57,10 @@ You can copy original tor config from container, modify and mount them back insi
 ```bash
 docker cp tor:/etc/tor/torrc /root/torrc
 # XXX: Hack...
-docker run --rm --name tor -p 127.0.0.1:9050:9050 --volume /root/torrc:/etc/tor/torrc:ro osminogin/tor-simple
+docker run --rm --name tor \
+  --publish 127.0.0.1:9050:9050 \
+  --volume /root/torrc:/etc/tor/torrc:ro \
+  osminogin/tor-simple
 ```
 
 

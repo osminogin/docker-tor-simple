@@ -7,7 +7,6 @@ RUN apk add --no-cache tor && \
 EXPOSE 9050
 
 VOLUME ["/var/lib/tor"]
-VOLUME ["/etc/tor/torrc"]
 
 USER tor
 
