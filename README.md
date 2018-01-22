@@ -11,8 +11,18 @@ The image is based on great [Alpine Linux](https://alpinelinux.org/) distributio
 Star this project on Docker Hub :star2: https://hub.docker.com/r/osminogin/tor-simple/
 
 
-## Getting started
+## Ports
 
+* `9050` SOCKSv5 (without auth)
+
+## Volumes
+
+* `/var/lib/tor` data dir.
+
+* `/etc/tor/torrc` config file.
+
+
+## Getting started
 
 ### Installation
 
@@ -42,9 +52,15 @@ After start Tor proxy available on `localhost:9050`
 Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exactly what you are doing (better bind to localhost as in the example above).
 
 
-## Ports
+## Advanced usage
 
-* `9050` SOCKSv5 (without auth)
+You can copy original tor config from container, modify and mount them back inside. Changing the configuration file is required for running Tor as exit node, relay or bridge.
+
+```bash
+docker cp tor:/etc/tor/torrc /root/torrc
+# XXX: Hack...
+docker run --rm --name tor -p 127.0.0.1:9050:9050 --volume /root/torrc:/etc/tor/torrc:ro osminogin/tor-simple
+```
 
 
 ## Unit file for systemd
