@@ -76,8 +76,9 @@ docker run --rm --name tor \
 ```ini
 [Unit]
 Description=Tor service
-After=docker.service
+Wants=network-online.target
 Requires=docker.service
+After=docker.service network-online.target
 
 [Service]
 TimeoutStartSec=0
