@@ -2,7 +2,7 @@
 Description=Tor service
 Wants=network-online.target
 Requires=docker.service
-After=docker.service network-online.target
+After=docker.service network.target network-online.target
 
 [Service]
 TimeoutStartSec=0

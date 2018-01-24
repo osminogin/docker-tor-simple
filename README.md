@@ -1,7 +1,6 @@
 # docker-tor-simple
 
-[![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/)
- [![](https://images.microbadger.com/badges/version/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://images.microbadger.com/badges/commit/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
+[![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/) [![](https://images.microbadger.com/badges/version/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://images.microbadger.com/badges/commit/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple)  [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
 
 **Smallest minimal docker container for Tor network proxy daemon.**
 
@@ -42,6 +41,9 @@ docker build -t tor github.com/osminogin/docker-tor-simple
 
 ```bash
 docker run -p 127.0.0.1:9050:9050 --name tor osminogin/tor-simple
+
+# or
+docker-compose up
 ```
 
 After start Tor proxy available on `localhost:9050`
@@ -62,7 +64,7 @@ docker cp tor:/etc/tor/torrc /root/torrc
 # ... modify torrc and run
 docker run --rm --name tor \
   --publish 127.0.0.1:9050:9050 \
-  --expose 9001 --publish 9001:9001 \
+  --expose 9001 --publish 9001:9001 \ # ORPort
   --expose 9030 --publish 9030:9030 \
   --expose 9051 --publish 9051:9051 \
   --volume /root/torrc:/etc/tor/torrc:ro \
@@ -78,7 +80,7 @@ docker run --rm --name tor \
 Description=Tor service
 Wants=network-online.target
 Requires=docker.service
-After=docker.service network-online.target
+After=docker.service network.target network-online.target
 
 [Service]
 TimeoutStartSec=0

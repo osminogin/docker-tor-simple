@@ -14,12 +14,11 @@ default: docker_build output
 docker_build:
 	@docker build \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-		--build-arg VERSION=$(ELECTRUM_VERSION) \
 		--build-arg VCS_REF=$(GIT_COMMIT) \
-		-t $(DOCKER_IMAGE):$(DOCKER_TAG) .
+		-t $(DOCKER_IMAGE):$(GIT_COMMIT) .
 
 docker_push:
-	docker tag $(DOCKER_IMAGE):$(DOCKER_TAG)
+	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(DOCKER_TAG)
 	docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
 
 output:

@@ -1,0 +1,6 @@
+version: '3'
+services:
+  tor:
+    build: .
+    ports:
+      - 9050:9050
