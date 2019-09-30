@@ -55,7 +55,7 @@ make run
 docker-compose up
 
 # or altenativly run docker directly ...
-docker run -publish 127.0.0.1:9050:9050 -i osminogin/tor-simple
+docker run -publish 127.0.0.1:9050:9050 -i $PROJECT_NAME
 ```
 
 After start Tor proxy available on `localhost:9050`
@@ -121,14 +121,14 @@ version: '3.7'
 services:
 
   tor-node:
-		image: osminogin/tor-simple
-		restart: always
+    image: osminogin/tor-simple
+    restart: always
     depends_on:
       - nginx
 
   nginx:
     image: nginx
-		restart: always
+    restart: always
     links:
       - drupal:drupalhost
     volumes:
