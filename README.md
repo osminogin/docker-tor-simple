@@ -1,6 +1,6 @@
 # docker-tor-simple
 
-[![](https://img.shields.io/badges/Tor%20version-0.4.1.6.svg)](https://github.com/torproject/tor/releases) [![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple)  [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
+[![](https://img.shields.io/badge/Tor%20version-0.4.1.6-green.svg)](https://github.com/torproject/tor/releases) [![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple)  [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
 
 **Smallest minimal docker container for Tor network proxy daemon.**
 
@@ -10,11 +10,11 @@ The image is based on great [Alpine Linux](https://alpinelinux.org/) distributio
 
 Service uses latest available version of [Tor package](https://pkgs.alpinelinux.org/package/edge/community/x86_64/tor) from [edge repo](https://wiki.alpinelinux.org/wiki/Edge).
 
-*Tags*
+## Tags
 
-``latest``: Latest available Alpine Edge packages https://pkgs.alpinelinux.org/packages?name=tor&branch=edge
+``latest``: Latest available Alpine Edge package.
 
-``source``: From sources build (work in progress so if can be interested - contact me)
+``source``: From sources build (work in progress so if you can be interested - contact me).
 
 
 ## Ports
