@@ -138,4 +138,4 @@ mysql:
 
 ## License
 
-MIT
+See [LICENSE.md](https://github.com/osminogin/docker-tor-simple/blob/master/LICENSE.md).
