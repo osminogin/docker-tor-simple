@@ -13,11 +13,13 @@ release: docker_build docker_push output
 default: docker_build output
 
 docker_build:
-	@docker build \
+	@docker build -f contrib/Dockerfile \
+		--compress \
+		--force-rm \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		--build-arg VCS_REF=$(GIT_COMMIT) \
 		--build-arg VERSION=$(VERSION) \
-		-t $(DOCKER_IMAGE):$(GIT_COMMIT) .
+		--tag $(DOCKER_IMAGE):$(GIT_COMMIT) .
 	@echo "Tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(DOCKER_TAG)"
 	@docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(DOCKER_TAG)
 
@@ -26,7 +28,7 @@ docker_push:
 
 run:
 	@echo 'Starting container $(DOCKER_IMAGE):$(GIT_COMMIT)'
-	@docker run -i $(DOCKER_IMAGE):$(GIT_COMMIT)
+	@docker run --publish 9050:9050 -i $(DOCKER_IMAGE):$(GIT_COMMIT)
 
 output:
 	@echo Docker Image: $(DOCKER_IMAGE):$(DOCKER_TAG)
