@@ -39,7 +39,8 @@ docker pull osminogin/tor-simple
 Alternatively you can build the image yourself.
 
 ```bash
-docker build -t tor github.com/osminogin/docker-tor-simple
+export PROJECT_NAME=tor   # default project name
+make build DOCKER_IMAGE=$PROJECT_NAME
 ```
 
 
@@ -50,8 +51,11 @@ export PROJECT_NAME=tor-local   # changing default name
 make build DOCKER_IMAGE=$PROJECT_NAME
 make run
 
-# or
+# or with docker-compose ...
 docker-compose up
+
+# or altenativly run docker directly ...
+docker run -publish 127.0.0.1:9050:9050 -i osminogin/tor-simple
 ```
 
 After start Tor proxy available on `localhost:9050`
@@ -66,18 +70,19 @@ Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exact
 You can copy original tor config from container, modify and mount them back inside. Changing the configuration file is required for running Tor as exit node, relay or bridge. For some operation modes you need to expose additional ports (9001, 9030, 9051).
 
 ```bash
+export DOCKER_IMAGE=osminogin/tor-simple
 # Copy config  from running container
-docker cp tor:/etc/tor/torrc /root/torrc
+docker cp tor:/etc/tor/torrc $HOME/torrc
 # ... modify torrc and run again
 
 # Start more complex example with updated config
 docker run --rm --name tor \
-  --publish 127.0.0.1:9050:9050 \
-  --expose 9001 --publish 9001:9001 \ # ORPort
-  --expose 9030 --publish 9030:9030 \
-  --expose 9051 --publish 9051:9051 \
-  --volume /root/torrc:/etc/tor/torrc:ro \
-  osminogin/tor-simple
+	--publish 127.0.0.1:9050:9050 \
+	--expose 9001 --publish 9001:9001 \ # ORPort
+	--expose 9030 --publish 9030:9030 \
+	--expose 9051 --publish 9051:9051 \
+	--volume $HOME/torrc:/etc/tor/torrc:ro \
+	$DOCKER_IMAGE
 ```
 
 ## Unit file for systemd
@@ -112,25 +117,31 @@ Example webserver deployment config with microservice architecture to setup Tor 
 #### docker-compose.yml
 
 ```yaml
-tor-node:
-  image: osminogin/tor-simple
-  links:
-    - nginx:myservice
+version: '3.7'
+services:
 
-nginx:
-  image: nginx
-  links:
-    - drupal:drupalhost
-  volumes:
-    - /srv/drupal:/srv/www:ro
-    - /srv/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  tor-node:
+		image: osminogin/tor-simple
+		restart: always
+    depends_on:
+      - nginx
 
-drupal:
-  image: osminogin/php-fpm
-  links:
-    - mysql:mysqlhost
-  volumes:
-    - /srv/drupal:/srv/www
+  nginx:
+    image: nginx
+		restart: always
+    links:
+      - drupal:drupalhost
+    volumes:
+      - /srv/drupal:/srv/www:ro
+      - /srv/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+
+  drupal:
+    image: osminogin/php-fpm
+    restart: always
+    links:
+      - mysql:mysqlhost
+    volumes:
+      - /srv/drupal:/srv/www
 
 mysql:
   image: mariadb
