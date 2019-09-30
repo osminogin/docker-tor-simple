@@ -8,7 +8,7 @@ Suitable for relay, exit node or hidden service modes with SOCKS5 proxy enabled.
 
 The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (about 6 MB).
 
-Service uses latest available version of [Tor package](https://pkgs.alpinelinux.org/package/edge/community/x86_64/tor) from [edge repo](https://wiki.alpinelinux.org/wiki/Edge).
+Service uses latest available version of [Tor package](https://pkgs.alpinelinux.org/package/edge/community/x86_64/tor) from [Edge repo](https://wiki.alpinelinux.org/wiki/Edge).
 
 ## Tags
 
@@ -46,7 +46,9 @@ docker build -t tor github.com/osminogin/docker-tor-simple
 ### Quickstart
 
 ```bash
-docker run -p 127.0.0.1:9050:9050 --name tor osminogin/tor-simple
+export PROJECT_NAME=tor-local   # changing default name
+make build DOCKER_IMAGE=$PROJECT_NAME
+make run
 
 # or
 docker-compose up
@@ -64,10 +66,11 @@ Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exact
 You can copy original tor config from container, modify and mount them back inside. Changing the configuration file is required for running Tor as exit node, relay or bridge. For some operation modes you need to expose additional ports (9001, 9030, 9051).
 
 ```bash
-# Copy config
+# Copy config  from running container
 docker cp tor:/etc/tor/torrc /root/torrc
+# ... modify torrc and run again
 
-# ... modify torrc and run
+# Start more complex example with updated config
 docker run --rm --name tor \
   --publish 127.0.0.1:9050:9050 \
   --expose 9001 --publish 9001:9001 \ # ORPort
@@ -91,7 +94,7 @@ After=docker.service network.target network-online.target
 [Service]
 TimeoutStartSec=0
 Restart=always
-RestartSec=15s
+RestartSec=10s
 ExecStartPre=/usr/bin/docker pull osminogin/tor-simple
 ExecStart=/usr/bin/docker run --rm --name tor -p 127.0.0.1:9050:9050 osminogin/tor-simple
 ExecStop=/usr/bin/docker stop tor
