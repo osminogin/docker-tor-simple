@@ -2,16 +2,21 @@ FROM alpine:edge
 
 ARG BUILD_DATE
 ARG VCS_REF
+ARG VERSION
 
-LABEL maintainer="oc@co.ru" \
+LABEL maintainer="osintsev@gmail.com" \
     com.microscaling.license="MIT" \
     org.label-schema.build-date=$BUILD_DATE \
     org.label-schema.name="Tor network client" \
+    org.label-schema.description="Tor network (headless) client with simple usage" \
     org.label-schema.url="https://www.torproject.org" \
     org.label-schema.vcs-url="https://github.com/osminogin/docker-tor-simple.git" \
     org.label-schema.vcs-ref=$VCS_REF \
+    org.label-schema.usage=""
     org.label-schema.docker.cmd="docker run -d --rm --publish 127.0.0.1:9050:9050 --name tor osminogin/tor-simple" \
-    org.label-schema.schema-version="1.0"
+    org.label-schema.schema-version="1.0" \
+    org.label-schema.vendor="Distributed.Solutions" \
+    org.label-schema.version=$VERSION
 
 
 RUN apk add --no-cache tor && \

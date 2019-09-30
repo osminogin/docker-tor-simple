@@ -1,3 +1,5 @@
+VERSION ?= 0.4.1.6
+
 GIT_COMMIT = $(strip $(shell git rev-parse --short HEAD))
 
 DOCKER_IMAGE ?= osminogin/tor-simple
@@ -15,6 +17,7 @@ docker_build:
 	@docker build \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		--build-arg VCS_REF=$(GIT_COMMIT) \
+		--build-arg VERSION=$(VERSION) \
 		-t $(DOCKER_IMAGE):$(GIT_COMMIT) .
 
 docker_push:
