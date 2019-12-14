@@ -13,7 +13,7 @@ release: docker_build docker_push output
 default: docker_build output
 
 docker_build:
-	@docker build . \
+	@docker build \
 		--compress \
 		--force-rm \
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
