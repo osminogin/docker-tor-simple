@@ -39,7 +39,7 @@ docker pull osminogin/tor-simple
 Alternatively you can build the image yourself.
 
 ```bash
-export PROJECT_NAME=tor   # default project name
+export PROJECT_NAME=tor-node   # docker image name
 make build DOCKER_IMAGE=$PROJECT_NAME
 ```
 
@@ -60,7 +60,7 @@ docker run -publish 127.0.0.1:9050:9050 -i $PROJECT_NAME
 
 After start Tor proxy available on `localhost:9050`
 
-:exclamation:**Warning**:exclamation:
+**Warning**:exclamation::exclamation::exclamation:
 
 Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exactly what you are doing (better bind to localhost as in the example above).
 
@@ -152,4 +152,4 @@ mysql:
 
 ## License
 
-See [LICENSE.md](https://github.com/osminogin/docker-tor-simple/blob/master/LICENSE.md).
+See [LICENSE.md](https://github.com/osminogin/docker-tor-simple/blob/master/LICENSE.md)
