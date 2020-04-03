@@ -1,3 +1,3 @@
 #!/bin/sh
 
-make release
+make build && make release
