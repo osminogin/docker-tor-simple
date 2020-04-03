@@ -1,6 +1,6 @@
 # docker-tor-simple
 
-[![](https://img.shields.io/badge/Tor%20version-0.4.2.5-green.svg)](https://github.com/torproject/tor/releases) [![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple)  [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
+ [![](https://images.microbadger.com/badges/version/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/) [![](https://images.microbadger.com/badges/commit/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
 
 **Smallest minimal docker container for Tor network proxy daemon.**
 
@@ -77,12 +77,12 @@ docker cp tor:/etc/tor/torrc $HOME/torrc
 
 # Start more complex example with updated config
 docker run --rm --name tor \
-	--publish 127.0.0.1:9050:9050 \
-	--expose 9001 --publish 9001:9001 \ # ORPort
-	--expose 9030 --publish 9030:9030 \
-	--expose 9051 --publish 9051:9051 \
-	--volume $HOME/torrc:/etc/tor/torrc:ro \
-	$DOCKER_IMAGE
+  --publish 127.0.0.1:9050:9050 \
+  --expose 9001 --publish 9001:9001 \ # ORPort
+  --expose 9030 --publish 9030:9030 \
+  --expose 9051 --publish 9051:9051 \
+  --volume $HOME/torrc:/etc/tor/torrc:ro \
+  $DOCKER_IMAGE
 ```
 
 ## Unit file for systemd
@@ -152,4 +152,4 @@ mysql:
 
 ## License
 
-See [LICENSE.md](https://github.com/osminogin/docker-tor-simple/blob/master/LICENSE.md)
+See [LICENSE](https://github.com/osminogin/docker-tor-simple/blob/master/LICENSE)

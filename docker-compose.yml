@@ -5,4 +5,4 @@ services:
     build: .
     restart: always
     ports:
-      - 9050:9050
+      - 127.0.0.1:9050:9050
