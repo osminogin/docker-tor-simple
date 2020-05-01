@@ -10,13 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: curl
+      - name: Get remote package data
         uses: wei/curl@master
         with:
           args: --silent "https://pkgs.alpinelinux.org/package/edge/community/x86_64/tor" --output /package_data.html
 
-      - name: grep latest version
+      - name: Grep latest version
         run: |
           grep -A 3 -i version | sed -E 's#.*>([0-9r.-]+)</a>#\1#g' | tail -1 > /latest_version.txt
 
       - uses: actions/checkout@v2
+
+      - name: Print remote version
+        run: |
+          cat /latest_version.txt
