@@ -1,0 +1,22 @@
+name: Latest version
+
+on:
+  schedule:
+    - cron:  "30 2 * * *"
+
+jobs:
+
+  check:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: curl
+        uses: wei/curl@master
+        with:
+          args: --silent "https://pkgs.alpinelinux.org/package/edge/community/x86_64/tor" --output /package_data.html
+
+      - name: grep latest version
+        run: |
+          grep -A 3 -i version | sed -E 's#.*>([0-9r.-]+)</a>#\1#g' | tail -1 > /latest_version.txt
+
+      - uses: actions/checkout@v2
