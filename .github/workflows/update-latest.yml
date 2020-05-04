@@ -32,4 +32,4 @@ jobs:
 
       - name: Check remote version with local
         run: |
-          grep -q $(cat ./latest_version.txt) VERSION
+          grep -q `cat ./latest_version.txt` VERSION
