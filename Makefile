@@ -21,6 +21,9 @@ docker_build:
 		--build-arg VERSION=$(VERSION) \
 		--tag $(DOCKER_IMAGE):$(VERSION) .
 
+buildx:
+	# TODO: Copy logic from docker file
+
 docker_tag:
 	docker tag $(DOCKER_IMAGE):$(VERSION) $(DOCKER_IMAGE):$(DOCKER_TAG)
 
@@ -35,4 +38,4 @@ run:
 output:
 	@echo Docker Image: $(DOCKER_IMAGE):$(DOCKER_TAG)
 
-.PHONY: release output run docker_build docker_push default build
+.PHONY: release output run docker_build docker_push default build buildx

@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - uses: actions/checkout@v2
+
       - name: Get remote package data
         uses: wei/curl@master
         with:
@@ -17,19 +19,18 @@ jobs:
 
       - name: Cut version from package data
         run: |
+          echo ::debug::Curl version `curl --version`
           grep -A 3 -i version | sed -E 's#.*>([0-9r.-]+)</a>#\1#g' | tail -1 > ./latest_version.txt
-
-      - uses: actions/checkout@v2
 
       - name: Print remote version
         run: |
-          cat ./latest_version.txt
+          echo ::debug::Tor remote package version ` cat ./latest_version.txt`
 
-      - uses: actions/upload-artifact@v2
-        with:
-          name: latest-version
-          path: ./latest_version.txt
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     name: latest-version
+      #     path: ./latest_version.txt
 
       - name: Check remote version with local
         run: |
-          grep -q $(cat ./latest_version.txt) VERSION
+          grep -q `cat ./latest_version.txt` VERSION
