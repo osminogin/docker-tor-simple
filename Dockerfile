@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM alpine:edge
+FROM alpine:edge
 
 ARG BUILDPLATFORM
 ARG BUILD_DATE
