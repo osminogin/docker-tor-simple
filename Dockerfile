@@ -24,6 +24,10 @@ RUN apk add --no-cache tor && \
 
 EXPOSE 9050
 
+HEALTHCHECK --interval=60s --timeout=15s --start-period=20s \
+            CMD curl -sx localhost:9050 'https://check.torproject.org/' | \
+            grep -qm1 Congratulations
+
 VOLUME ["/var/lib/tor"]
 
 USER tor
