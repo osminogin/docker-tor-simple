@@ -1,6 +1,6 @@
 # docker-tor-simple
 
- [![](https://images.microbadger.com/badges/version/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/) [![](https://images.microbadger.com/badges/commit/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
+[![](https://images.microbadger.com/badges/version/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/) [![](https://images.microbadger.com/badges/commit/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
 
 **Smallest minimal docker container for Tor network proxy daemon.**
 
@@ -55,7 +55,7 @@ make run
 docker-compose up
 
 # or altenativly run docker directly ...
-docker run -publish 127.0.0.1:9050:9050 -i $PROJECT_NAME
+docker run --publish 127.0.0.1:9050:9050 -i $PROJECT_NAME
 ```
 
 After start Tor proxy available on `localhost:9050`
@@ -70,7 +70,6 @@ Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exact
 You can copy original tor config from container, modify and mount them back inside. Changing the configuration file is required for running Tor as exit node, relay or bridge. For some operation modes you need to expose additional ports (9001, 9030, 9051).
 
 ```bash
-export DOCKER_IMAGE=osminogin/tor-simple
 # Copy config  from running container
 docker cp tor:/etc/tor/torrc $HOME/torrc
 # ... modify torrc and run again
@@ -82,7 +81,7 @@ docker run --rm --name tor \
   --expose 9030 --publish 9030:9030 \
   --expose 9051 --publish 9051:9051 \
   --volume $HOME/torrc:/etc/tor/torrc:ro \
-  $DOCKER_IMAGE
+  osminogin/tor-simple
 ```
 
 ## Unit file for systemd
@@ -150,6 +149,10 @@ mysql:
 ```
 
 
+## ChangeLog
+
+[CHANGELOG.md](https://raw.githubusercontent.com/osminogin/docker-tor-simple/master/CHANGELOG.md)
+
 ## License
 
-See [LICENSE](https://github.com/osminogin/docker-tor-simple/blob/master/LICENSE)
+See [LICENSE](https://raw.githubusercontent.com/osminogin/docker-tor-simple/master/LICENSE)

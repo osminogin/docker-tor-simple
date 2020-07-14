@@ -27,4 +27,4 @@ VOLUME ["/var/lib/tor"]
 
 USER tor
 
-CMD ["/usr/bin/tor"]
+CMD ["tor"]
