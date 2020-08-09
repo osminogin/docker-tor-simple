@@ -1,6 +1,6 @@
 # docker-tor-simple
 
-[![build images](https://github.com/osminogin/docker-tor-simple/workflows/build%20images/badge.svg)](https://github.com/osminogin/docker-tor-simple/actions?query=workflow%3A%22build+images%22) [![](https://images.microbadger.com/badges/version/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![License: MIT](https://img.shields.io/badge/license-MIT-black.svg)](https://opensource.org/licenses/MIT)
+[![build images](https://github.com/osminogin/docker-tor-simple/workflows/build%20images/badge.svg)](https://github.com/osminogin/docker-tor-simple/actions?query=workflow%3A%22build+images%22) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![License: MIT](https://img.shields.io/badge/license-MIT-black.svg)](https://opensource.org/licenses/MIT)
 
 **Smallest minimal docker container for Tor network proxy daemon.**
 
