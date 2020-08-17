@@ -16,7 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up Docker Buildx
-#        id: buildx
         uses: crazy-max/ghaction-docker-buildx@v1
         with:
           buildx-version: latest
@@ -34,15 +33,3 @@ jobs:
             --output "type=image,push=true" \
             -t osminogin/tor-simple \
             .
-
-      - run: |
-          docker images
-
-      # - uses: docker/build-push-action@v1
-      #   with:
-      #     username: ${{ secrets.DOCKER_USERNAME }}
-      #     password: ${{ secrets.DOCKER_PASSWORD }}
-      #     repository: osminogin/tor-simple
-      #     tags: latest
-
-
