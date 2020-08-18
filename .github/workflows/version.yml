@@ -18,4 +18,4 @@ jobs:
 
       - name: Check remote version with local
         run: |
-          grep -A 3 -i version package_data.html | sed -E 's#.*>([^-]+).*</a>#\1#g' | grep -q $(cat VERSION)
+          grep -A 3 -i version package_data.html | sed -E 's#.*>([^-]+).*</a>#\1#g' | tail -1 | grep -q $(cat VERSION)
