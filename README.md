@@ -1,6 +1,6 @@
 # docker-tor-simple
 
- [![](https://images.microbadger.com/badges/version/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/build/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple/builds/) [![](https://images.microbadger.com/badges/commit/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
+[![build images](https://github.com/osminogin/docker-tor-simple/workflows/build%20images/badge.svg)](https://github.com/osminogin/docker-tor-simple/actions?query=workflow%3A%22build+images%22) [![](https://images.microbadger.com/badges/version/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![latest version](https://github.com/osminogin/docker-tor-simple/workflows/latest%20version/badge.svg)](https://github.com/osminogin/docker-tor-simple/actions?query=workflow%3A%22latest+version%22) [![](https://img.shields.io/docker/stars/osminogin/tor-simple.svg)](https://hub.docker.com/r/osminogin/tor-simple) [![](https://images.microbadger.com/badges/image/osminogin/tor-simple.svg)](https://microbadger.com/images/osminogin/tor-simple) [![License: MIT](https://img.shields.io/badge/license-MIT-black.svg)](https://github.com/osminogin/docker-tor-simple/blob/master/LICENSE)
 
 **Smallest minimal docker container for Tor network proxy daemon.**
 
@@ -9,13 +9,6 @@ Suitable for relay, exit node or hidden service modes with SOCKS5 proxy enabled.
 The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (about 6 MB).
 
 Service uses latest available version of [Tor package](https://pkgs.alpinelinux.org/package/edge/community/x86_64/tor) from [Edge repo](https://wiki.alpinelinux.org/wiki/Edge).
-
-## Tags
-
-``latest``: Latest available Alpine Edge package.
-
-``source``: From sources build (work in progress so if you can be interested - contact me).
-
 
 ## Ports
 
@@ -55,14 +48,12 @@ make run
 docker-compose up
 
 # or altenativly run docker directly ...
-docker run -publish 127.0.0.1:9050:9050 -i $PROJECT_NAME
+docker run --publish 127.0.0.1:9050:9050 -i $PROJECT_NAME
 ```
 
 After start Tor proxy available on `localhost:9050`
 
-**Warning**:exclamation::exclamation::exclamation:
-
-Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exactly what you are doing (better bind to localhost as in the example above).
+**Warning! Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exactly what you are doing (is much better bind to `localhost` as in the example above)**.
 
 
 ## Advanced usage
@@ -70,7 +61,6 @@ Don't bind SOCKSv5 port 9050 to public network addresses if you don't know exact
 You can copy original tor config from container, modify and mount them back inside. Changing the configuration file is required for running Tor as exit node, relay or bridge. For some operation modes you need to expose additional ports (9001, 9030, 9051).
 
 ```bash
-export DOCKER_IMAGE=osminogin/tor-simple
 # Copy config  from running container
 docker cp tor:/etc/tor/torrc $HOME/torrc
 # ... modify torrc and run again
@@ -82,7 +72,7 @@ docker run --rm --name tor \
   --expose 9030 --publish 9030:9030 \
   --expose 9051 --publish 9051:9051 \
   --volume $HOME/torrc:/etc/tor/torrc:ro \
-  $DOCKER_IMAGE
+  osminogin/tor-simple
 ```
 
 ## Unit file for systemd
@@ -135,6 +125,7 @@ services:
       - /srv/drupal:/srv/www:ro
       - /srv/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
 
+  # TODO: Replace with simple echo server or use traefik instead nginx
   drupal:
     image: osminogin/php-fpm
     restart: always
@@ -149,6 +140,9 @@ mysql:
     MYSQL_ROOT_PASSWORD: changeme
 ```
 
+## Changelog
+
+[CHANGELOG.md](https://github.com/osminogin/docker-tor-simple/blob/master/CHANGELOG.md)
 
 ## License
 
