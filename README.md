@@ -140,10 +140,6 @@ mysql:
     MYSQL_ROOT_PASSWORD: changeme
 ```
 
-## Changelog
-
-[CHANGELOG.md](https://github.com/osminogin/docker-tor-simple/blob/master/CHANGELOG.md)
-
 ## License
 
 See [LICENSE](https://github.com/osminogin/docker-tor-simple/blob/master/LICENSE)
