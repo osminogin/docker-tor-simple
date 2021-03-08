@@ -4,7 +4,7 @@
 
 **Smallest minimal docker container for Tor network proxy daemon.**
 
-Suitable for relay, exit node or hidden service modes with SOCKSv5 proxy enabled. It works well as a single self-contained container or in cooperation with other containers (like `nginx` and `osminogin/php-fpm`) for organizing complex hidden services on the Tor network.
+Suitable for relay, exit node or hidden service modes with SOCKSv5 proxy enabled. It works well as a single self-contained container or in cooperation with other containers (like `nginx`) for organizing complex hidden services on the Tor network.
 
 The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (about 8 MB).
 
@@ -119,25 +119,6 @@ services:
   nginx:
     image: nginx
     restart: always
-    links:
-      - drupal:drupalhost
-    volumes:
-      - /srv/drupal:/srv/www:ro
-      - /srv/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-
-  # TODO: Replace with simple echo server or use traefik instead nginx
-  drupal:
-    image: osminogin/php-fpm
-    restart: always
-    links:
-      - mysql:mysqlhost
-    volumes:
-      - /srv/drupal:/srv/www
-
-mysql:
-  image: mariadb
-  environment:
-    MYSQL_ROOT_PASSWORD: changeme
 ```
 
 ## License
