@@ -3,6 +3,9 @@ name: latest version
 on:
   schedule:
     - cron: '20 1 * * *'
+  push:
+    branches:
+      - master
 
 jobs:
 
