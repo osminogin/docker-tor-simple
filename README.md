@@ -6,7 +6,7 @@
 
 Suitable for relay, exit node or hidden service modes with SOCKSv5 proxy enabled. It works well as a single self-contained container or in cooperation with other containers (like `nginx`) for organizing complex hidden services on the Tor network.
 
-The image is based on great [Alpine Linux](https://alpinelinux.org/) distribution so it is has extremely low size (about 8 MB).
+The image is based on great Alpine Linux distribution so it is has extremely low size (about 8 MB).
 
 Service uses latest available version of [Tor package](https://pkgs.alpinelinux.org/package/edge/community/x86_64/tor) from [Edge repo](https://wiki.alpinelinux.org/wiki/Edge).
 
