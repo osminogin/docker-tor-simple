@@ -6,9 +6,15 @@ services:
     restart: always
     ports:
       - 127.0.0.1:9050:9050
+<<<<<<< Updated upstream
     volumes:
       - tor-data:/var/lib/tor
 
 volumes:
   tor-data:
     driver: local
+=======
+
+  # traefik:
+  #   image: t
+>>>>>>> Stashed changes
