@@ -25,7 +25,7 @@ jobs:
           qemu-version: latest
       - name: Run Buildx
         run: |
-          DOCKER_IMAGE=osminogin/tor-simple
+          DOCKER_IMAGE=emersonian/tor-simple
           docker buildx create --use --name build --node build --driver-opt network=host
           docker buildx build \
             --platform linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64 \
@@ -38,4 +38,4 @@ jobs:
             .
       - name: Inspect Image
         run: |
-          docker buildx imagetools inspect osminogin/tor-simple:latest
+          docker buildx imagetools inspect emersonian/tor-simple:latest
