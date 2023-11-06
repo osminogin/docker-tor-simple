@@ -8,7 +8,6 @@ ARG VERSION
 
 LABEL maintainer="osintsev@gmail.com" \
     org.label-schema.license="MIT" \
-    org.label-schema.vendor="Distirbuted Solutions, Inc." \
     org.label-schema.build-date=$BUILD_DATE \
     org.label-schema.name="Tor network client (daemon)" \
     org.label-schema.description="Tor network client (daemon) with simple usage" \
