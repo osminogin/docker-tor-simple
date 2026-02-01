@@ -19,7 +19,7 @@ LABEL maintainer="osintsev@gmail.com" \
     org.label-schema.schema-version="1.0" \
     org.label-schema.version=$VERSION
 
-RUN apk add --no-cache curl tor && \
+RUN apk add --no-cache curl tor obfs4proxy && \
     sed "1s/^/SocksPort 0.0.0.0:9050\n/" /etc/tor/torrc.sample > /etc/tor/torrc
 
 EXPOSE 9050
